@@ -12,7 +12,147 @@ Produce the following UML diagrams:
 
 a.	Use case diagrams describing the processes that take place in this system and the actors that ............ and take part in the system. Consider how many system you may need and show the system ........... ......... Draw at least two systems with their appropriate actors, use cases and system boundary, Provede full and detailed descriptions for three use cases.
 
+Use Cases for the Campaign Management System (CMS):
+Propose Campaign (Customer proposes a campaign to Adwell)
+Record Campaign Details (Administrative staff records the campaign information)
+Assess Campaign (Technical staff assesses the feasibility of the campaign)
+Advise Campaign (Technical staff advises on whether to proceed with the campaign)
+Revise Campaign (Technical staff revises the campaign based on customer feedback)
+Stop Campaign (Administrative staff stops a campaign if the customer is unhappy)
+Complete Campaign (Administrative staff marks the campaign as completed when the customer makes the final payment)
+
+
+Actors and Use Cases for the Employee Management System (EMS)
+Actors:
+Administrative Staff: Manages employee records (both technical and administrative staff).
+Use Cases:
+Manage Employee Records (Administrative staff manages general employee data).
+Manage Technical Staff Information (Administrative staff records technical staff skill and availability).
+Manage Administrative Staff Information (Administrative staff records qualifications of administrative staff).
+
 b.	A class diagram showing the classes involved in the system, their attributes, methods. relationships and relationship multiplicity. Show at least one example of each one of the following concepts inheritance, aggregation and composition.
+
+B. Class Diagram
+Here is a class diagram representing the core entities, their attributes, methods, relationships, and multiplicities in the system.
+
+Classes and Relationships
+Campaign
+
+Attributes:
+campaignTitle (String)
+startDate (Date)
+endDate (Date)
+budget (Double)
+status (String)
+Methods:
+proposeCampaign()
+recordDetails()
+assessCampaign()
+markComplete()
+Advertisement (Superclass for Newspaper and Website Ads)
+
+Attributes:
+adTitle (String)
+targetDate (Date)
+estimatedCost (Double)
+actualCost (Double)
+Methods:
+createAd()
+setCosts()
+NewspaperAdvertisement (Subclass of Advertisement)
+
+Attributes:
+newspaperName (String)
+placement (String)
+repeatDates (Date[])
+Methods:
+setRepeatDates()
+WebsiteAdvertisement (Subclass of Advertisement)
+
+Attributes:
+websiteProvider (String)
+startDate (Date)
+endDate (Date)
+Methods:
+setWebsiteDetails()
+Employee
+
+Attributes:
+employeeName (String)
+startDate (Date)
+employeeNumber (String)
+Methods:
+updateEmployeeInfo()
+TechnicalStaff (Subclass of Employee)
+
+Attributes:
+areaOfSkill (String)
+availability (String)
+Methods:
+updateSkill()
+updateAvailability()
+AdministrativeStaff (Subclass of Employee)
+
+Attributes:
+qualification (String)
+Methods:
+updateQualification()
+Relationships:
+Aggregation:
+A Campaign can have multiple Advertisements (1..* relationship).
+Composition:
+A Technical Staff is a specialized Employee and cannot exist without an Employee (composition between Employee and TechnicalStaff).
+Inheritance:
+TechnicalStaff and AdministrativeStaff inherit from Employee (inheritance relationship).
+
+
++---------------------+    +--------------------------+
+|      Campaign       |<>--|      Advertisement       |
++---------------------+    +--------------------------+
+| campaignTitle       |    | adTitle                  |
+| startDate           |    | targetDate               |
+| endDate             |    | estimatedCost            |
+| budget              |    | actualCost               |
+| status              |    +--------------------------+
++---------------------+    |                          |
+| proposeCampaign()   |    +---------------------------+  
+| recordDetails()     |    | WebsiteAdvertisement      |
+| assessCampaign()    |    +---------------------------+
+| markComplete()      |    | websiteProvider           |
++---------------------+    | startDate                 |
+                           | endDate                   |
+                           +---------------------------+  
+                           |                          |
+                           | NewspaperAdvertisement    |
+                           +---------------------------+
+                           | newspaperName             |
+                           | placement                 |
+                           | repeatDates               |
+                           +---------------------------+
+
+     +--------------------------+
+     |        Employee           |
+     +--------------------------+
+     | employeeName             |
+     | startDate                |
+     | employeeNumber           |
+     +--------------------------+
+     | updateEmployeeInfo()     |
+     +--------------------------+
+            ^
+            |
++-----------+-----------+  
+|                       |
++-------------------+  +------------------------+
+| TechnicalStaff    |  | AdministrativeStaff    |
++-------------------+  +------------------------+
+| areaOfSkill       |  | qualification           |
+| availability      |  +------------------------+
++-------------------+
+| updateSkill()     |
+| updateAvailability()|
++-------------------+
+
 
 
 c.	An Object Interaction Diagram (OID) or Message sequence Diagram which shows one .......... sequence of events for one of the identified use cases. You do not need  to draw OID’s for all the identified use cases. one is sufficient for this questions.
@@ -34,8 +174,217 @@ Produce the following UML diagrams:
 
 a.	Use case diagrams describing the processes that take place in this system and the actors that stimulate and take part in the system.  Consider how many systems you may need show the system boundaries. Draw at least two systems with their appropriate actors. Use cases and system boundary. Provide descriptions for all the use cases.
 
+A. Use Case Diagrams for World Traveller System
+To properly model the World Traveller system, we can break it into two main subsystems:
+
+Customer Management System (CMS)
+Booking and Payment System (BPS)
+System 1: Customer Management System (CMS)
+This subsystem handles all interactions related to customer registration, consultation, and the collection of their requirements for booking holidays.
+
+Actors:
+Customer: Initiates the travel request and interacts with the consultant.
+Sales Consultant: Manages customer requirements, makes recommendations, and records their holiday preferences.
+Use Cases for CMS:
+Register Customer: The sales consultant registers the customer in the system.
+Capture Customer Requirements: The sales consultant records the customer's holiday preferences, such as destinations, accommodations, and additional services (e.g., car hire, insurance).
+Provide Alternatives: The sales consultant suggests alternative travel options when the customer’s first choice is unavailable.
+Finalize Itinerary: Once the customer has chosen the holiday options, the sales consultant creates an itinerary for the customer.
+System 2: Booking and Payment System (BPS)
+This subsystem handles the booking process, payment options, and the eventual confirmation of the booking.
+
+Actors:
+Sales Consultant: Manages the booking, inputs customer payment information, and issues receipts.
+Customer: Pays for the booking (either via credit card, deposit, or full payment).
+System: Handles the calculation of payment, commissions, and invoice generation.
+Use Cases for BPS:
+Generate Itinerary Printout: After the itinerary is finalized, a printout of the itinerary is given to the customer.
+Process Payment: The customer makes a payment. It could be full or a deposit (with a possibility of credit card payment).
+Add Commission for Credit Card Payment: If the customer pays by credit card, a 1.5% commission is added to the total amount.
+Confirm Booking: Once full payment is received, the booking is confirmed and a receipt is provided to the customer.
+Record Deposit Payment: If a deposit is paid, the booking is provisionally confirmed, and the deposit amount is recorded.
+Issue Receipt: The system generates a receipt for the customer once the full payment is made.
+
+
+
+Descriptions of Use Cases:
+Register Customer:
+
+Actor: Sales Consultant
+Description: A sales consultant registers a new customer in the system by entering their name, contact details, and other relevant information.
+Capture Customer Requirements:
+
+Actor: Sales Consultant
+Description: The consultant collects the customer’s preferences regarding destinations, accommodations, flight requirements, and additional services like insurance or car hire.
+Provide Alternatives:
+
+Actor: Sales Consultant
+Description: If a customer’s preferred holiday option is unavailable, the consultant offers alternative choices that are similar but meet the customer’s preferences.
+Finalize Itinerary:
+
+Actor: Sales Consultant
+Description: The sales consultant compiles the customer’s choices into a detailed itinerary, which is then presented to the customer for approval.
+Generate Itinerary Printout:
+
+Actor: System
+Description: Once the itinerary is finalized, the system generates a printable version of the itinerary that the customer can take home.
+Process Payment:
+
+Actor: Customer, Sales Consultant
+Description: The customer makes a payment for the holiday, either as a deposit or full payment. This is recorded in the system.
+Add Commission for Credit Card Payment:
+
+Actor: System
+Description: If the customer chooses to pay by credit card, the system adds a 1.5% commission fee to the total bill amount.
+Confirm Booking:
+
+Actor: Sales Consultant, System
+Description: Once full payment is made, the booking is confirmed, and a receipt is generated for the customer.
+Record Deposit Payment:
+
+Actor: System
+Description: If the customer pays a deposit, the system records the deposit amount and marks the booking as provisional.
+Issue Receipt:
+
+Actor: System
+Description: Once full payment is received, the system generates and issues a receipt for the customer.
+
+
+
+
+
 
 b.	A class diagram showing the classes involved in the system, their attributes, methods, relationships and relationship multiplicity. Show at least one example of each one of the following concepts inheritance, aggregation and composition.
+
+B. Class Diagram for World Traveller System
+Here’s the class diagram for the system, showing classes involved in the process, their attributes, methods, and relationships.
+
+Classes and Relationships
+Customer
+
+Attributes:
+customerName (String)
+contactInfo (String)
+customerID (String)
+Methods:
+updateContactInfo()
+Sales Consultant
+
+Attributes:
+consultantName (String)
+consultantID (String)
+Methods:
+registerCustomer()
+recordCustomerRequirements()
+finalizeItinerary()
+HolidayPackage
+
+Attributes:
+packageName (String)
+destination (String)
+accommodation (String)
+price (Double)
+Methods:
+checkAvailability()
+suggestAlternatives()
+Itinerary
+
+Attributes:
+itineraryID (String)
+customer (Customer)
+package (HolidayPackage)
+totalPrice (Double)
+paymentStatus (String)
+Methods:
+generatePrintout()
+addPayment()
+Payment
+
+Attributes:
+paymentID (String)
+amount (Double)
+paymentType (String) (Full/Deposit)
+paymentStatus (String)
+Methods:
+processPayment()
+addCommission()
+Receipt
+
+Attributes:
+receiptID (String)
+issueDate (Date)
+totalAmount (Double)
+Methods:
+generateReceipt()
+Relationships:
+Aggregation:
+A Customer can have many Itineraries (1..* relationship).
+Composition:
+A Payment is part of an Itinerary (if the itinerary is cancelled, the payment is deleted).
+Inheritance:
+Sales Consultant is a specialized type of Employee (inherits from Employee).
+
+
+
+
+
++-----------------------+    +----------------------+
+|      Customer         |    |    Sales Consultant  |
++-----------------------+    +----------------------+
+| customerName          |    | consultantName       |
+| contactInfo           |    | consultantID         |
+| customerID            |    +----------------------+
++-----------------------+    | registerCustomer()   |
+| updateContactInfo()    |    | recordCustomerReq()  |
++-----------------------+    | finalizeItinerary()   |
+        ^                   +----------------------+
+        |                             |
++-----------------------+    +----------------------+
+|     HolidayPackage    |    |       Itinerary      |
++-----------------------+    +----------------------+
+| packageName           |    | itineraryID          |
+| destination           |    | customer (Customer)  |
+| accommodation         |    | package (HolidayPackage)|
+| price                 |    | totalPrice           |
++-----------------------+    | paymentStatus        |
+| checkAvailability()   |    +----------------------+
+| suggestAlternatives()  |    | generatePrintout()   |
++-----------------------+    | addPayment()          |
+                            +----------------------+
+                                   ^
+                                   |
+                            +----------------------+
+                            |       Payment        |
+                            +----------------------+
+                            | paymentID            |
+                            | amount               |
+                            | paymentType          |
+                            | paymentStatus        |
+                            +----------------------+
+                            | processPayment()     |
+                            | addCommission()      |
+                            +----------------------+
+                                   ^
+                                   |
+                            +----------------------+
+                            |        Receipt       |
+                            +----------------------+
+                            | receiptID            |
+                            | issueDate            |
+                            | totalAmount          |
+                            +----------------------+
+                            | generateReceipt()    |
+                            +----------------------+
+
+
+
+Key Concepts:
+Inheritance: The Sales Consultant class inherits from Employee (assumed superclass for all employees at World Traveller).
+
+Aggregation: A Customer can have multiple Itineraries, meaning an itinerary can be associated with many customers over time.
+
+Composition: A Payment is a part of an Itinerary. If the itinerary is canceled, the associated payment details will be removed as well.
+
 
 
 c.	An Object Interaction Diagram (OID) in the form of a Message sequence Diagram which shows one particular sequence of events for one of the identified use cases. You do not need  to draw OID’s for all the identified use cases, one is sufficient for this questions.
