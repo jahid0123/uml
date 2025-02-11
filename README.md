@@ -9,9 +9,15 @@ When a customer commissions an advertising campaign, Adwell’s administrative s
 A campaign begins life when a customer proposes it. Adwell’s technical staff assess the propossed campaign but if it looks unsatisfactory they advise against it and it becomes a discarded campaign. Usually the technical staff consider a campaign to be satisfactory and it becomes a recommended campaign, A recommended campaign may be subject to revision if the customer wants one or more changes and Adwell’s technical staff aproved these. The campaign becomes a commisioned campaign when the customer commission it. When the first advertisements are produced by the technical staff the campaign becomes and underway campign. Where it is underway the campaign can be stopped if the customer is unhappy about the response to it and it is marked as a stopped campaign. Othewise a campign becomes a completed campaign when the customers makes the final payment.
 
 Produce the following UML diagrams:
+
 a.	Use case diagrams describing the processes that take place in this system and the actors that ............ and take part in the system. Consider how many system you may need and show the system ........... ......... Draw at least two systems with their appropriate actors, use cases and system boundary, Provede full and detailed descriptions for three use cases.
+
 b.	A class diagram showing the classes involved in the system, their attributes, methods. relationships and relationship multiplicity. Show at least one example of each one of the following concepts inheritance, aggregation and composition.
+
+
 c.	An Object Interaction Diagram (OID) or Message sequence Diagram which shows one .......... sequence of events for one of the identified use cases. You do not need  to draw OID’s for all the identified use cases. one is sufficient for this questions.
+
+
 d.	A state transition diagram for one appropriate class from the diagram.
 
 
@@ -24,9 +30,17 @@ You have been asked to analyses and design a system for World Traveller. You hav
 You are required to produce models to represent only the description provided above. This requirement specification is partial and incomplete description of the problem and you are asked to model it in a way that allows for further classes to be added when required. For example World Traveller only provide package holidays at present and the company may expand to provide other forms of holidays such as cruises repeat business trips, trips to multiple destinations, specialized holidays, and other types of travel, Which may be developed in the future. Another example may be that their billing and collection of payment may change. The model should be designed so it can be easily adapted to meet any changes.
 
 Produce the following UML diagrams:
+
+
 a.	Use case diagrams describing the processes that take place in this system and the actors that stimulate and take part in the system.  Consider how many systems you may need show the system boundaries. Draw at least two systems with their appropriate actors. Use cases and system boundary. Provide descriptions for all the use cases.
+
+
 b.	A class diagram showing the classes involved in the system, their attributes, methods, relationships and relationship multiplicity. Show at least one example of each one of the following concepts inheritance, aggregation and composition.
+
+
 c.	An Object Interaction Diagram (OID) in the form of a Message sequence Diagram which shows one particular sequence of events for one of the identified use cases. You do not need  to draw OID’s for all the identified use cases, one is sufficient for this questions.
+
+
 d.	A state transition diagram for one appropriate class from the diagram.
 
 
